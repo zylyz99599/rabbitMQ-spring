@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    publisher-confirm-type: correlated # 交换机的确认
+    publisher-returns: true # 队列的确认
+    listener:
+      simple:
+        acknowledge-mode: manual # 把消息确认模式改为手动确认
+        prefetch: 1
+logging:
+  level:
+    com.atguigu.mq.config.MQProducerAckConfig: info
